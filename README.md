@@ -10,6 +10,7 @@
 
 ## 2. Structure
 
+```bash
 .
 +-- app
 |   +-- assets
@@ -26,5 +27,6 @@
 +-- index.js
 +-- package.json
 +-- yarn.lock
+```
 
 ## 3. Navigation Flow
