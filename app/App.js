@@ -2,13 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
-import Topbar from './Topbar';
-import ArticleBoard from './ArticleBoard';
-import Navbar from './Navbar';
-//import Sidebar from './Sidebar';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faBars, faArrowLeft, faHome, faUserCircle, faSearch } from '@fortawesome/free-solid-svg-icons'
+import Topbar from './screens/Topbar';
+import ArticleBoard from './screens/ArticleBoard';
+import Navbar from './screens/Navbar';
+//import Sidebar from './screens/Sidebar';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faBars, faArrowLeft, faHome, faUserCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 library.add( fab, faBars, faArrowLeft, faHome, faUserCircle, faSearch );
 
