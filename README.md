@@ -12,21 +12,21 @@
 
 ```bash
 .
-+-- app
-|   +-- assets
-|   +-- components
-|   +-- screens
-|   |   +-- ArticleBoard.js
-|   |   +-- Navbar.js
-|   |   +-- Sidebar.js
-|   |   +-- Topbar.js
-|   +-- App.js
-+-- .gitignore
-+-- app.json
-+-- babel.config.js
-+-- index.js
-+-- package.json
-+-- yarn.lock
+├── app
+│   └── assets
+│   └── components
+│   └── screens
+│   │   ├── ArticleBoard.js
+│   │   └── Navbar.js
+│   │   └── Sidebar.js
+│   │   └── Topbar.js
+│   └── App.js
+└── .gitignore
+└── app.json
+└── babel.config.js
+└── index.js
+└── package.json
+└── yarn.lock
 ```
 
 ## 3. Navigation Flow
