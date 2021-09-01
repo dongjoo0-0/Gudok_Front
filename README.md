@@ -30,3 +30,5 @@
 ```
 
 ## 3. Navigation Flow
+
+![image](https://user-images.githubusercontent.com/46925347/131677188-3cbf95b7-9a2c-4912-aa6b-616edb8c9f30.png)
