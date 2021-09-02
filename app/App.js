@@ -1,28 +1,31 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Constants from 'expo-constants';
-import Topbar from './screens/Topbar';
-import ArticleBoard from './screens/ArticleBoard';
-import Navbar from './screens/Navbar';
-//import Sidebar from './screens/Sidebar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// Import Screen Libraries.
+
+import HomeScreen from './screens/HomeScreen';
+
+// Import Fontawesome Libraries to use icons.
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faArrowLeft, faHome, faUserCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 library.add( fab, faBars, faArrowLeft, faHome, faUserCircle, faSearch );
 
-export default function App() {
-  const [openSidebar, setOpenSidebar] = useState(false);
+const Stack = createNativeStackNavigator();
+
+export default App = () => {
 
   return (
-    <View style={styles.container}>
-      <View style={styles.statusBar} />
-      <Topbar />
-      <ArticleBoard />
-      <Navbar />
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={ HomeScreen } />
+      </Stack.Navigator>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
     /* 
     login board
     register board
@@ -35,14 +38,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  statusBar: {
-    height: Constants.statusBarHeight,
-  }
-});
+
