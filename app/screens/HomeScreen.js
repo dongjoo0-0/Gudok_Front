@@ -9,8 +9,6 @@ import Navbar from '../components/Navbar';
 export default HomeScreen = ({ navigation }) => {
   return(
     <View style={styles.container}>
-      <View style={styles.statusBar} />
-      <Topbar />
       <ArticleBoard />
       <Navbar />
     </View>
