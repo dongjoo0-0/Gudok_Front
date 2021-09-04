@@ -3,9 +3,13 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Import Screen Libraries.
+// Import Screens.
 
 import HomeScreen from './screens/HomeScreen';
+
+// Import Components.
+
+import Topbar from './components/Topbar';
 
 // Import Fontawesome Libraries to use icons.
 
@@ -22,7 +26,11 @@ export default App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={ HomeScreen } />
+        <Stack.Screen 
+          name="Home" 
+          component={ HomeScreen } 
+          options={{ headerLeft: () => <Topbar/>, headerTitleAlign: 'center' }}
+        />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
