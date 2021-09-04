@@ -8,4 +8,3 @@ export default Topbar = () => {
   );
   /* bars arrow-left */
 }
-

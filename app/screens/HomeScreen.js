@@ -1,7 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import Constants from 'expo-constants';
-import Topbar from '../components/Topbar';
 import ArticleBoard from '../components/ArticleBoard';
 import Navbar from '../components/Navbar';
 //import Sidebar from '../components/Sidebar';
@@ -21,8 +19,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  statusBar: {
-    height: Constants.statusBarHeight,
   }
 });
