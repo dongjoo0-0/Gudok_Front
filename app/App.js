@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // Import Screens.
 
 import HomeScreen from './screens/HomeScreen';
+import ArticleScreen from './screens/ArticleScreen';
 
 // Import Components.
 
@@ -30,6 +31,10 @@ export default App = () => {
           name="Home" 
           component={ HomeScreen } 
           options={{ headerLeft: () => <Topbar/>, headerTitleAlign: 'center' }}
+        />
+        <Stack.Screen 
+          name="Article" 
+          component={ ArticleScreen }
         />
       </Stack.Navigator>
       <StatusBar style="auto" />
