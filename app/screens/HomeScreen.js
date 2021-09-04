@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 export default HomeScreen = ({ navigation }) => {
   return(
     <View style={styles.container}>
-      <ArticleBoard />
+      <ArticleBoard navigation={navigation}/>
       <Navbar />
     </View>
   );
