@@ -37,4 +37,4 @@
 
 ## 3. Navigation Flow
 
-![image](https://user-images.githubusercontent.com/46925347/131677188-3cbf95b7-9a2c-4912-aa6b-616edb8c9f30.png)
+![flow](https://user-images.githubusercontent.com/46925347/132096778-34962667-8275-47b0-9ceb-2fb22151fb85.png)
