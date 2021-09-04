@@ -1,7 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 
-export default function ArticleBoard() {
+export default ArticleBoard = ({ navigation }) => {
+  const renderItem = ({item}) => {
+    return(
+      <TouchableOpacity onPress={()=> navigation.navigate('Article')} style={styles.item}>
+        <Text>{item.key}</Text>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -13,7 +21,7 @@ export default function ArticleBoard() {
           {key: '글4'},
           {key: '글5'},
         ]}
-        renderItem={({item}) => <View style={styles.item}><Text>{item.key}</Text></View>}
+        renderItem={renderItem}
       />
     </View>
   );
