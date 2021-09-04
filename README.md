@@ -14,12 +14,18 @@
 .
 ├── app
 │   └── assets
+│   │   ├── adaptive-icon.png
+│   │   └── favicon.png
+│   │   └── icon.png
+│   │   └── splash.png
 │   └── components
-│   └── screens
 │   │   ├── ArticleBoard.js
 │   │   └── Navbar.js
 │   │   └── Sidebar.js
 │   │   └── Topbar.js
+│   └── screens
+│   │   ├── ArticleScreen.js
+│   │   └── HomeScreen.js
 │   └── App.js
 └── .gitignore
 └── app.json
