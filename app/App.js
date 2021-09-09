@@ -24,30 +24,32 @@ const Stack = createNativeStackNavigator();
 
 export default App = () => {
 
+  const isLoggedIn = true;
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen 
-          name="Home" 
-          component={ HomeScreen } 
-          options={{ headerLeft: () => <Topbar/>, headerTitleAlign: 'center' }}
-        />
-        <Stack.Screen 
-          name="Article" 
-          component={ ArticleScreen }
-        />
+      { IsLoggedIn ? (
+        <>
+          <Stack.Screen 
+            name="Home" 
+            component={ HomeScreen } 
+            options={{ headerLeft: () => <Topbar/>, headerTitleAlign: 'center' }}
+          />
+          <Stack.Screen 
+            name="Article" 
+            component={ ArticleScreen }
+          />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="LogIn" component={} />
+          <Stack.Screen name="Register" component={} />
+        </>
+      )}
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
-    /* 
-    login board
-    register board
-    top title bar / article board / bot nav bar / side bar -> main page
-    top search bar / search autocomplete board
-    top result bar
-    reserved word bar
-    profile / menu list
-    */
   );
 }
 
