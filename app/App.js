@@ -52,7 +52,8 @@ export default App = () => {
           />
           <Stack.Screen 
             name="Register" 
-            component={ RegisterScreen } 
+            component={ RegisterScreen }
+            options={{ headerShown: false }}
           />
         </>
       )}
