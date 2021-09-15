@@ -1,26 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 
+import getPosts from './getPosts';
+
 export default ArticleBoard = ({ navigation }) => {
   const renderItem = ({item}) => {
     return(
       <TouchableOpacity onPress={()=> navigation.navigate('Article')} style={styles.item}>
-        <Text>{item.key}</Text>
+        <Text>{item.title}</Text>
       </TouchableOpacity>
     );
   }
+
+  const posts = getPosts(10, 0, null, null);
 
   return (
     <View style={styles.container}>
       <FlatList
         style={styles.list}
-        data={[
-          {key: '글1'},
-          {key: '글2'},
-          {key: '글3'},
-          {key: '글4'},
-          {key: '글5'},
-        ]}
+        data={posts}
         renderItem={renderItem}
       />
     </View>
