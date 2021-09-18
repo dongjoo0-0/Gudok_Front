@@ -26,10 +26,13 @@ import { faBars, faArrowLeft, faHome, faUserCircle, faSearch } from '@fortawesom
 
 library.add( fab, faBars, faArrowLeft, faHome, faUserCircle, faSearch );
 
+// StackNavigator를 만든다.
+
 const Stack = createNativeStackNavigator();
 
 export default App = () => {
 
+  // 로그인 여부에 따라 Auth로 넘어갈지 Home으로 넘어갈지 결정함. AuthProvider를 통해 하위 컴포넌트에서도 auth 정보를 가져올 수 있다.
   const isLoggedIn = true;
 
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-
 import getPosts from './getPosts';
 
 export default ArticleBoard = ({ navigation }) => {
+  // item render function
   const renderItem = ({item}) => {
     return(
       <TouchableOpacity onPress={()=> navigation.navigate('Article')} style={styles.item}>
@@ -11,7 +11,8 @@ export default ArticleBoard = ({ navigation }) => {
       </TouchableOpacity>
     );
   }
-
+  
+  // get post from external component
   const posts = getPosts(10, 0, null, null);
 
   return (

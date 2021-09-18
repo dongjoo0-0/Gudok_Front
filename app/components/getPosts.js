@@ -26,7 +26,7 @@ export default getPosts = (limit, offset, search, subscribe) => {
       }
     }
   ]
-
+  // distructuring data
   const posts = data.map((item) => item.post);
   /*
   axios
