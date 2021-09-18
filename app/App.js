@@ -14,6 +14,10 @@ import RegisterScreen from './screens/RegisterScreen';
 
 import Topbar from './components/Topbar';
 
+// Import Contexts.
+
+import { AuthProvider } from './contexts/AuthContext';
+
 // Import Fontawesome Libraries to use icons.
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -29,37 +33,39 @@ export default App = () => {
   const isLoggedIn = true;
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-      { isLoggedIn ? (
-        <>
-          <Stack.Screen 
-            name="Home" 
-            component={ HomeScreen } 
-            options={{ headerLeft: () => <Topbar/>, headerTitleAlign: 'center' }}
-          />
-          <Stack.Screen 
-            name="Article" 
-            component={ ArticleScreen }
-          />
-        </>
-      ) : (
-        <>
-          <Stack.Screen 
-            name="LogIn" 
-            component={ LogInScreen } 
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen 
-            name="Register" 
-            component={ RegisterScreen }
-            options={{ headerShown: false }}
-          />
-        </>
-      )}
-      </Stack.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+        { isLoggedIn ? (
+          <>
+            <Stack.Screen 
+              name="Home" 
+              component={ HomeScreen } 
+              options={{ headerLeft: () => <Topbar/>, headerTitleAlign: 'center' }}
+            />
+            <Stack.Screen 
+              name="Article" 
+              component={ ArticleScreen }
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen 
+              name="LogIn" 
+              component={ LogInScreen } 
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+              name="Register" 
+              component={ RegisterScreen }
+              options={{ headerShown: false }}
+            />
+          </>
+        )}
+        </Stack.Navigator>
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
 
