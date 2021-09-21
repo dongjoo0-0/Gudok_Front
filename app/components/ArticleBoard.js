@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import getPosts from './getPosts';
+import axios from 'axios';
+
+// convert object id number to string to identify objects.
+const convertIdToString = (object) => {
+  object["id"] = object.id.toString();
+  return object;
+}
 
 export default ArticleBoard = ({ navigation }) => {
+  const [posts, setPosts] = useState();
+
+  // we need clean-up function... maybe?
+  useEffect(() => {
+    axios
+      .get("http://172.30.1.47:5000/api/post?limit=10")
+      .then(response => {
+        setPosts(response.data.posts.map(item => convertIdToString(item)));
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  }, []);
+
   // item render function
   const renderItem = ({item}) => {
     return(
-      <TouchableOpacity onPress={()=> navigation.navigate('Article')} style={styles.item}>
+      <TouchableOpacity onPress={()=> navigation.navigate('Article', { uri: item.url })} style={styles.item}>
         <Text>{item.title}</Text>
       </TouchableOpacity>
     );
   }
-  
-  // get post from external component
-  const posts = getPosts(10, 0, null, null);
 
   return (
     <View style={styles.container}>
