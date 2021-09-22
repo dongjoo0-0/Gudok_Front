@@ -17,8 +17,10 @@ export default ArticleBoard = ({ navigation }) => {
       .get("http://172.30.1.47:5000/api/post?limit=10")
       .then(response => {
         setPosts(response.data.posts.map(item => convertIdToString(item)));
+        console.log("Finished loading posts");
       })
       .catch(error => {
+        console.log(error);
         alert(error.message);
       });
   }, []);
