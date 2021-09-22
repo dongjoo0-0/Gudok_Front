@@ -8,6 +8,12 @@
 
 ## 1. Installation
 
+1. install Node 12 LTS
+2. install expo-cli (need [Watchman](https://facebook.github.io/watchman/docs/install#buildinstall) for mac users.)
+3. install Expo Go App in user phone (iOS, Android)
+4. install dependencies
+
+
 ## 2. Structure
 
 ```bash
@@ -23,15 +29,20 @@
 │   │   └── Navbar.js
 │   │   └── Sidebar.js
 │   │   └── Topbar.js
+│   └── contexts
+│   │   └── AuthContext.js
 │   └── screens
 │   │   ├── ArticleScreen.js
 │   │   └── HomeScreen.js
+│   │   └── LoginScreen.js
+│   │   └── RegisterScreen.js
 │   └── App.js
 └── .gitignore
 └── app.json
 └── babel.config.js
 └── index.js
 └── package.json
+└── README.md
 └── yarn.lock
 ```
 
