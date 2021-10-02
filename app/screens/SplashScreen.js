@@ -22,6 +22,25 @@ import axios from 'axios';
 
 const Stack = createNativeStackNavigator();
 
+// Try to get data from server.
+export const isAuthenticated = async () => {
+  try {
+    /*const response = await axios.get("url");
+    return response.data;*/
+    const dummy = {
+      user: {
+        _id: "",
+        email: "adsf@asdf.asdf",
+        search_list : ['asdf','asdf'],
+        subscribe_list : ['asdf','asdf']
+      }
+    }
+    return dummy;
+  } catch (error) {
+    return console.log(error);
+  }
+}
+
 export default SplashScreen = () => {
   // Get Context from AuthProvider initialized AuthContext.
   const [authState, setAuthState] = useContext(AuthContext);
@@ -45,25 +64,6 @@ export default SplashScreen = () => {
         }
       })
   };
-
-  // Try to get data from server.
-  const isAuthenticated = async () => {
-    try {
-      /*const response = await axios.get("url");
-      return response.data;*/
-      const dummy = {
-        user: {
-          _id: "",
-          email: "adsf@asdf.asdf",
-          search_list : ['asdf','asdf'],
-          subscribe_list : ['asdf','asdf']
-        }
-      }
-      return dummy;
-    } catch (error) {
-      return console.log(error);
-    }
-  }
 
   // Load user data when this screen mounts.
   useEffect(()=> {
