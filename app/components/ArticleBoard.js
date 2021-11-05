@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import { useGetServer } from '../hooks/useGetServer';
 
 // convert object id number to string to identify objects.
 const convertIdToString = (object) => {
@@ -9,7 +10,7 @@ const convertIdToString = (object) => {
 }
 
 export default ArticleBoard = ({ navigation }) => {
-  const [posts, setPosts] = useState();
+  /*const [posts, setPosts] = useState();
 
   // we need clean-up function... maybe?
   useEffect(() => {
@@ -23,7 +24,8 @@ export default ArticleBoard = ({ navigation }) => {
         console.log(error);
         alert(error.message);
       });
-  }, []);
+  }, []);*/
+  const posts = useGetServer("http://172.30.1.47:5000/api/post?limit=10")
 
   // item render function
   const renderItem = ({item}) => {
