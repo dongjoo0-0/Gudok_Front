@@ -41,7 +41,7 @@ export default LogInScreen = ({ navigation }) => {
       </View>
 
       <TouchableOpacity style={styles.button}>
-        <Text style={{color: 'white'}}>Login</Text>
+        <Text style={{color: 'white'}}>Log in</Text>
       </TouchableOpacity>
     </ScrollView>
   );
