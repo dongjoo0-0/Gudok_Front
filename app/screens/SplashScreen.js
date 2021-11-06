@@ -17,16 +17,17 @@ import Topbar from '../components/Topbar';
 import { AuthContext } from '../contexts/AuthContext';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Create Navigator.
 
-const Stack = createNativeStackNavigator();
+
 
 // Try to get data from server.
 export const isAuthenticated = async () => {
   try {
     /*const response = await axios.get("url");
-    return response.data;*/
+    return response.data;
     const dummy = {
       user: {
         _id: "",
@@ -34,14 +35,15 @@ export const isAuthenticated = async () => {
         search_list : ['asdf','asdf'],
         subscribe_list : ['asdf','asdf']
       }
-    }
-    return dummy;
+    }*/
+    const dummy = await AsyncStorage.getItem("user");
+    return {user: {email: dummy}};
   } catch (error) {
     return console.log(error);
   }
 }
 
-export default SplashScreen = () => {
+export default SplashScreen = ({navigation}) => {
   // Get Context from AuthProvider initialized AuthContext.
   const [authState, setAuthState] = useContext(AuthContext);
 
@@ -49,6 +51,10 @@ export default SplashScreen = () => {
   const loadData = () => {
     isAuthenticated()
       .then(data => {
+        if(data === null){
+          console.log("Error: Not available");
+          return;
+        }
         if(data.error){
           console.log("Error", data.error);
         }
@@ -65,41 +71,26 @@ export default SplashScreen = () => {
       })
   };
 
+  const removeItemValue = async (key) => {
+    try {
+        await AsyncStorage.removeItem(key);
+        return true;
+    }
+    catch(exception) {
+        return false;
+    }
+  }  
+
   // Load user data when this screen mounts.
   useEffect(()=> {
     loadData();
     console.log("Finished load data");
+    removeItemValue("user");
+    navigation.replace(authState.email ? 'Content' : 'Auth');
   }, []);
 
   // if authStata._id is empty string, get to login screen. else, home screen.
   return(
-    <Stack.Navigator>
-    { authState._id ? (
-      <>
-        <Stack.Screen 
-          name="Home" 
-          component={ HomeScreen } 
-          options={{ headerLeft: () => <Topbar/>, headerTitleAlign: 'center' }}
-        />
-        <Stack.Screen 
-          name="Article" 
-          component={ ArticleScreen }
-        />
-      </>
-    ) : (
-      <>
-        <Stack.Screen 
-          name="LogIn" 
-          component={ LogInScreen } 
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen 
-          name="Register" 
-          component={ RegisterScreen }
-          options={{ headerShown: false }}
-        />
-      </>
-    )}
-    </Stack.Navigator>
+    <></>
   );
 };
