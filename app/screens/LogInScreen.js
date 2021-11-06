@@ -1,9 +1,35 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text, ScrollView } from 'react-native';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default LogInScreen = ({ navigation }) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    if(!email) {
+      alert("이메일을 입력하지 않았습니다.");
+      return;
+    }
+    if(!password) {
+      alert("비밀번호를 입력하지 않았습니다.");
+      return;
+    }
+    let form = {"user": {"email": email, "password": password}};
+    /*axios.post("http://localhost:5000/api/user/login", form)
+      .then(response => {
+        console.log(response);
+        //AsyncStorage.setItem('user', response.data.user);
+        navigation.replace("SplashScreen");
+      })
+      .catch(error => {
+        console.log(error);
+        alert(error.message);
+      })*/
+    AsyncStorage.setItem("user", "asdf@asdf.asdf");
+    navigation.replace("Content");
+  }
 
   return(
     <ScrollView contentContainerStyle={styles.container}> 
@@ -12,13 +38,14 @@ export default LogInScreen = ({ navigation }) => {
       <Text style={styles.title}>Login</Text>
 
       <View style={styles.items}>
-        <Text>Username</Text>
+        <Text>Email</Text>
         <TextInput 
           style={styles.input}
-          onChangeText={setUsername}
-          text={username}
-          autoCompleteType={'username'}
-          textContentType={'username'}
+          onChangeText={setEmail}
+          text={email}
+          keyboardType={'email-address'}
+          autoComplete={'email'}
+          textContentType={'emailAddress'}
           returnKeyType={'next'}
         />
         <Text>Password</Text>
@@ -40,7 +67,7 @@ export default LogInScreen = ({ navigation }) => {
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={{color: 'white'}}>Log in</Text>
       </TouchableOpacity>
     </ScrollView>
