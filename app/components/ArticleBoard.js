@@ -11,7 +11,7 @@ const convertIdToString = (object) => {
 
 export default ArticleBoard = ({ navigation }) => {
   
-  const posts = useGetServer("http://172.30.1.47:5000/api/post?limit=10")
+  const posts = useGetServer("http://localhost:5000/api/post?limit=10")
 
   // item render function
   const renderItem = ({item}) => {

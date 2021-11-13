@@ -1,9 +1,10 @@
-import { describe } from 'jest-circus';
+import { describe, it } from 'jest-circus';
 import React, {useContext} from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import SplashScreen, { isAuthenticated } from '../screens/SplashScreen';
 import { AuthProvider } from '../contexts/AuthContext';
 import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 /* 
@@ -66,4 +67,28 @@ describe("Open App", () => {
       await waitFor(() => getByText('Home'))
     });
   });*/
+  describe("Try Login", () => {
+    it("Login Success", async () => {
+
+      jest.mock('../screens/LogInScreen', () => {
+        handleSubmit: () => {AsyncStorage.setItem('user', {
+          email: "adsf@asdf.asdf",
+          search_list : ['asdf','asdf'],
+          subscribe_list : ['asdf','asdf']
+        })}
+      });
+
+      const { getByText } = render(
+        <NavigationContainer>
+          <AuthProvider>
+            <LogInScreen/>
+          </AuthProvider>
+        </NavigationContainer>
+      );
+
+      //클릭하는 액션 넣어야 되는데;;
+
+      await waitFor(() => getByText('Home'))
+    })
+  })
 });
